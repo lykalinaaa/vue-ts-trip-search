@@ -126,4 +126,10 @@
     margin-right: auto;
   }
 
+  @media screen and (max-width: 730px) {
+    .catalogue {
+      justify-content: center;
+    }
+  }
+
 </style>
