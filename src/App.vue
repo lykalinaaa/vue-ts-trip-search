@@ -1,13 +1,35 @@
 <script lang="ts">
   import City from './models/CitiesModel';
+  import Product from './models/ProductsModel';
   import ItemCard from './components/ItemCard.vue';
 
   export default {
-    
+    props: {
+      id: {
+        type: Number,
+      },
+      imgSrc: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      rate: {
+        type: Number,
+      },
+      reviews: {
+        type: Number,
+      },
+      price: {
+        type: String,
+      },
+    },
+    components: { ItemCard },
     data () {
       return {
         cities: [] as City[],
-        items: [],
+        products: [] as Product[],
+        showCatalogue: false,
       }
     },
     created() {
@@ -16,8 +38,15 @@
       .then(cities => {
         this.cities = cities;
       })
+      .catch((error) => {console.error(error);});
+
+      fetch('../data/products.json')
+      .then(res => res.json())
+      .then(products => {
+        this.products = products;
+      })
       .catch((error) => {console.error(error);})
-    }
+    },
   }
   
 </script>
@@ -39,7 +68,15 @@
       </select>
     </div>
     <div class="catalogue">
-
+      <ItemCard 
+         v-for="product in products"
+         :id="product.id"
+         :imgSrc="product.cover_photo.big"
+         :name="product.title"
+         :price="product.netto_price"
+         :rate="product.customers_review_rating"
+         :review="product.reviews"
+      />
     </div>
   </section>
 </template>
@@ -74,6 +111,15 @@
     padding-left: 15px;
   }
 
-
+  .catalogue {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1115px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 </style>

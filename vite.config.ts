@@ -6,7 +6,15 @@ import vue from '@vitejs/plugin-vue'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return tag.startsWith('ion-') // (return true)
+          }
+        }
+      }
+    })
   ],
   resolve: {
     alias: {

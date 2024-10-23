@@ -4,4 +4,5 @@ export default interface Product {
   netto_price: string,
   customers_review_rating: number,
   reviews: number,
+  imgSrc: string,
 }
