@@ -5,4 +5,5 @@ export default interface Product {
   customers_review_rating: number,
   reviews: number,
   imgSrc: string,
+  city_id: number,
 }
