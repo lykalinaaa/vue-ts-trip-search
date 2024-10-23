@@ -58,10 +58,9 @@
   </header>
 
   <section class="search">
+    
     <div class="filter">
-      <form>
-        <input class="filter__inner" type="text" placeholder="Введите название экскурсии">
-      </form>
+      <input class="filter__inner" type="text" placeholder="Введите название экскурсии">
       <select name="city" class="filter__inner">
         <option value="Выбрать город">Выбрать город</option>
         <option v-for="city in cities" :key="city.id" :value="city.id">{{ city.name }}</option>
@@ -100,6 +99,7 @@
     gap: 30px;
     justify-content: center;
     margin-top: 55px;
+    flex-wrap: wrap;
   }
 
   .filter__inner {
@@ -111,11 +111,15 @@
     padding-left: 15px;
   }
 
+  .filter__inner::-webkit-scrollbar {
+    display: none;
+  }
+
   .catalogue {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
-    justify-content: center;
+    justify-content: left;
     max-width: 1115px;
     margin-top: 70px;
     margin-left: auto;
