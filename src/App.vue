@@ -89,7 +89,7 @@
   <section class="search">
     
     <div class="filter">
-      <input v-model="nameParam" @change="selectNameParam" class="filter__inner" type="text" placeholder="Введите название экскурсии">
+      <input v-model="nameParam" @change="selectNameParam" class="filter__inner" type="search" placeholder="Введите название экскурсии">
       <select v-model="cityParam" @change="selectCityParam" name="city" class="filter__inner">
         <option value="0">Выберите город</option>
         <option v-for="city in cities" :key="city.id" :value="city.id">{{ city.name }}</option>
@@ -142,10 +142,16 @@
     color: #999999;
     font-size: 16px;
     padding-left: 15px;
+    padding-right: 10px;
   }
 
   .filter__inner::-webkit-scrollbar {
     display: none;
+  }
+
+  .filter__inner::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background: url(./assets/pic/clear.png);
   }
 
   .not_found {
